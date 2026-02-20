@@ -1,0 +1,28 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+<entity name="annotation">
+<attribute name="subject" />
+<attribute name="notetext" />
+<attribute name="filename" />
+<attribute name="documentbody" />
+<attribute name="annotationid" />
+<attribute name="overriddencreatedon" />
+<attribute name="owningbusinessunit" />
+<attribute name="ownerid" />
+<attribute name="modifiedon" />
+<attribute name="modifiedonbehalfby" />
+<attribute name="modifiedby" />
+<attribute name="isdocument" />
+<attribute name="filesize" />
+<attribute name="createdon" />
+<attribute name="createdonbehalfby" />
+<attribute name="createdby" />
+<order attribute="subject" descending="false" />
+<link-entity name="incident" from="incidentid" to="objectid" link-type="inner" alias="ad">
+<link-entity name="msdyn_workorder" from="msdyn_workorderid" to="ifm_workorderid" link-type="inner" alias="ae">
+<filter type="and">
+<condition attribute="msdyn_name" operator="eq" value="@{triggerOutputs()?['body/msdyn_name']}" />
+</filter>
+</link-entity>
+</link-entity>
+</entity>
+</fetch>
